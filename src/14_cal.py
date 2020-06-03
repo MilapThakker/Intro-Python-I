@@ -22,7 +22,7 @@ Note: the user should provide argument input (in the initial call to run the fil
 prompted input. Also, the brackets around year are to denote that the argument is
 optional, as this is a common convention in documentation.
 
-This would mean that from the command line you would call `python3 14_cal.py 4 2015` to 
+This would mean that from the command line you would call `python3 src/14_cal.py 4 2015` to 
 print out a calendar for April in 2015, but if you omit either the year or both values, 
 it should use today’s date to get the month and year.
 """
@@ -30,3 +30,16 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+if len(sys.argv) == 3:
+  month = int(sys.argv[1])
+  year = int(sys.argv[2])
+  print(calendar.month(year, month))
+else:
+  today = datetime.today()
+  month = today.month
+  year = today.year
+  print(calendar.month(year, month))
+
+
+  #python3 src/14_cal.py 4 2015
